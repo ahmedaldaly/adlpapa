@@ -3,11 +3,13 @@ import CategoriesSection from "@/components/pages/home/categoriesSection";
 import AxiosServer from "@/lib/axiosServer";
 import React from "react";
 
+// ✅ هذا السطر يخبر Next.js أن الصفحة يجب أن تكون ديناميكية
+export const dynamic = "force-dynamic";
+
 export default async function page() {
   let categories: CategoriesType[] = [];
   try {
     const res = await AxiosServer.get("/categories");
-    // categories
     categories = res?.data?.data as CategoriesType[];
   } catch (error) {
     console.log(error);
