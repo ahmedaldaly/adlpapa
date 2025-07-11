@@ -72,11 +72,11 @@ export function CategoryHeader() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           {categories && categories.length > 0 && categories.slice(0, 5).map(item => <NavigationMenuItem key={item.id}>
-            <LinkApp href={`/categories/${item.id}`} >
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${!isHome && '!text-black'}`}>
+            <NavigationMenuLink asChild>
+              <LinkApp href={`/categories/${item.id}`} className={`${navigationMenuTriggerStyle()} ${!isHome && '!text-black'}`}>
                 {item.name}
-              </NavigationMenuLink>
-            </LinkApp>
+              </LinkApp>
+            </NavigationMenuLink>
           </NavigationMenuItem>)}
         </NavigationMenuList>
       </NavigationMenu>
@@ -85,12 +85,12 @@ export function CategoryHeader() {
   const ListItem = React.forwardRef<
     React.ElementRef<"a">,
     React.ComponentPropsWithoutRef<"a">
-  >(({ className, title, children, ...props }, ref) => {
+  >(({ className, title, children, href, ...props }, ref) => {
     return (
       <li>
         <NavigationMenuLink asChild>
-          <a
-            ref={ref}
+          <LinkApp
+            href={href}
             className={cn(
               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
               className
@@ -101,7 +101,7 @@ export function CategoryHeader() {
             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
               {children}
             </p>
-          </a>
+          </LinkApp>
         </NavigationMenuLink>
       </li>
     )

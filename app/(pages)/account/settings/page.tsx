@@ -116,6 +116,7 @@ export default function ProfileSettings() {
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
+                  <AlertDialogTitle>العنوان</AlertDialogTitle>
                   <AlertDialogHeader>
                     <AlertDialogTitle>
                       Are you sure you want to delete your account?
